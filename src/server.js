@@ -56,6 +56,7 @@ const MONGO_URL = process.env.MONGO_URL;
           /**
            * 삭제된 경우 user 객체 리턴
            */
+
           const user = await User.findOneAndDelete({ _id: userId });
           return res.status(200).send({ user });
         } else {
