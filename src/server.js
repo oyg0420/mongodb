@@ -16,8 +16,8 @@ const MONGO_URL = process.env.MONGO_URL;
       useCreateIndex: true,
       useFindAndModify: false,
     });
+    mongoose.set("debug", true);
     app.use(express.json());
-
     app.put("/user/:userId", async (req, res, next) => {
       try {
         const { userId } = req.params;
@@ -34,7 +34,7 @@ const MONGO_URL = process.env.MONGO_URL;
            */
           const user = await User.findByIdAndUpdate(
             userId,
-            { $set: { age } },
+            { age },
             { new: true }
           );
           return res.status(200).send({ user });
